@@ -1,0 +1,65 @@
+Swapper::constructor
+├── when called with address is passed
+│   ├── it deploys
+│   ├── it sets the approval to uniswap
+│   └── it sets the governor
+└── when passing an invalid address
+    └── it reverts
+
+Swapper::provide
+├── when called by a user
+│   ├── when passing a valid amount
+│   │   ├── it updates the user's balance
+│   │   ├── it updates the total balance
+│   │   ├── it transfers the fromToken to the contract
+│   │   └── it emits Provided
+│   └── when passing an invalid amount
+│       └── it reverts
+└── when called after the swap has been executed
+    └── it reverts
+
+Swapper::provideWithEth
+├── when called by a user
+│   ├── when passing a valid amount
+│   │   ├── it updates the user's balance
+│   │   ├── it updates the total balance
+│   │   ├── it deposits the ETH to WETH
+│   │   └── it emits Provided
+│   └── when passing an invalid amount
+│       └── it reverts 
+└── when called after the swap has been executed
+    └── it reverts
+
+Swapper::swap
+├── when called by the governor
+│   ├── when passing a valid amount
+│   │   ├── it sets swapExecuted to true
+│   │   ├── it gets the real price
+│   │   ├── it sets the amountOutMin
+│   │   ├── it sets the path
+│   │   ├── it swaps the tokens
+│   │   └── it returns the amount of DAI received
+└── when called by a non-governor
+    └── it reverts
+
+Swapper::withdraw
+├── when called by a user
+│   ├── when swap has been executed
+│   │   ├── it updates the user's balance
+│   │   ├── it updates the total balance
+│   │   ├── it transfers the toToken to the user
+│   │   └── it emits Withdrawn
+│   └── when swap has not been executed
+│       ├── it updates the user's balance
+│       ├── it updates the total balance
+│       ├── it transfers the fromToken to the user
+│       └── it emits Withdrawn
+└── when called by a non-user
+    └── it reverts
+
+Swapper::setSwapExecuted
+├── when called by the governor
+│   ├── it sets swapExecuted to false
+│   └── it emits SetSwapExecuted
+└── when called by a non-governor
+    └── it reverts

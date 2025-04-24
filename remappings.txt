@@ -1,5 +1,6 @@
-forge-std/=node_modules/forge-std/src
+forge-std/=node_modules/forge-std/src/
 halmos-cheatcodes=node_modules/halmos-cheatcodes
+@openzeppelin/=node_modules/openzeppelin-solidity/
 
-contracts/=src/contracts
-interfaces/=src/interfaces
+contracts/=src/contracts/
+interfaces/=src/interfaces/
