@@ -3,6 +3,7 @@ yarn-error.log
 node_modules
 .DS_STORE
 .vscode
+.wake
 
 # Foundry files
 cache
